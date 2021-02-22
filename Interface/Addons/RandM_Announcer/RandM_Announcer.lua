@@ -282,8 +282,10 @@ function RandM_Announcer.BETA_ALERT()
 end
 
 function RandM_Announcer.UpdatePoints()
-    EndOrderPoints = GameData.ScenarioData.orderPoints
-    EndDestroPoints = GameData.ScenarioData.destructionPoints
+	if GameData.Player.isInScenario == true then
+	    EndOrderPoints = GameData.ScenarioData.orderPoints
+	    EndDestroPoints = GameData.ScenarioData.destructionPoints
+	end
 end
 
 function RandM_Announcer.FilterCheck(Language,msg)
@@ -531,7 +533,7 @@ end
 function RandM_Announcer.End()
     local PlayerRace = GameData.Player.realm
     if math.random(1,10) > 1 then
-        if PlayerRace == 2 then -- DESTRO
+        if PlayerRace == 2 then
             if EndDestroPoints > EndOrderPoints then
                 killType = winKT[math.random(#winKT)]
                 RandM_Announcer.logSoundToPlay(killType);
@@ -541,7 +543,7 @@ function RandM_Announcer.End()
             end
         end
 
-        if PlayerRace == 1 then -- ORDER
+        if PlayerRace == 1 then
             if EndDestroPoints < EndOrderPoints then
                 killType = winKT[math.random(#winKT)]
                 RandM_Announcer.logSoundToPlay(killType);
@@ -571,14 +573,14 @@ function RandM_Announcer.End()
 end
 
 function RandM_Announcer.OnRes()
-    if math.random(1,5) == 5 then
+    if math.random(1,5) == 5 and GameData.Player.isInScenario == true then
     killType = resKT[math.random(#resKT)]
     RandM_Announcer.logSoundToPlay(killType);
     end
 end
 
 function RandM_Announcer.TargetUpdate(mode)
-    if math.random(1,10) == 10 then
+    if math.random(1,10) == 10 and GameData.Player.isInScenario == true then
         local TargetCareerNo = (TargetInfo:UnitCareer("selfhostiletarget"))
         if LastPlayedCharCom ~= TargetCareerNo then
             if mode == "selfhostiletarget" and TargetCareer ~= "" then
