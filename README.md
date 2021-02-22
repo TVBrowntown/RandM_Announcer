@@ -7,11 +7,11 @@ Rick and Morty Announcer Pack for Warhammer Online.
 WHAT CAN IT DO?
  
 During scenarios Rick and Morty will occassionally...
-	- Announce the start of the game.
-	- Respond to your death.
-	- Announce your building killstreaks.
-	- Share their thoughts on your current target.
-	- Summarize how they feel at the end of the game.
+1 Announce the start of the game.
+2 Respond to your death.
+3 Announce your building killstreaks.
+4 Share their thoughts on your current target.
+5 Summarize how they feel at the end of the game.
 
 HOW DO THE KILLSTREAKS WORK?
 
