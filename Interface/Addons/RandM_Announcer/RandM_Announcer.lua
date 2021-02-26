@@ -313,8 +313,8 @@ function RandM_Announcer.OnCombatLogUpdated(updateType, filterType)
     local currenttime, filterId, text = TextLogGetEntry( "Combat", TextLogGetNumEntries("Combat") - 1 )
         if ( filterType == SystemData.ChatLogFilters.RVR_KILLS_ORDER or filterType == SystemData.ChatLogFilters.RVR_KILLS_DESTRUCTION ) then            
             local Victim,Killer = RandM_Announcer.FilterCheck(Language,text)
-            if tostring(Killer) == tostring(PlayerName) then
-                RandM_Announcer.KillSpree()           
+            if tostring(Killer) == tostring(PlayerName) and tostring(Victim) ~= tostring(PlayerName) then
+                RandM_Announcer.KillSpree()
             elseif tostring(Victim) == tostring(PlayerName) then 
                 RandM_Announcer.YouDied()
             end                     
@@ -365,6 +365,13 @@ function RandM_Announcer.KillSpree()
         local ctotalinsec = choursinsec+cminutesinsec+secs;
 
         local diffsecs = ctotalinsec-fbtotalsec;
+        d("---")
+        d(diffsecs)
+        d("Difference Time")
+        d(ctotalinsec)
+        d("Current Time in Seconds")
+        d(fbtotalsec)
+        d("Killing Blow in Seconds")
 
         if (diffsecs < KillTimer) then
             KillSpree = KillSpree + 1;
