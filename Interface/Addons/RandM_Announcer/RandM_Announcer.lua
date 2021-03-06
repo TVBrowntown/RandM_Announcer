@@ -4,7 +4,7 @@ RandM_Announcer.logFileName = "RandM_Announcer"
 PlayerName = wstring.sub( GameData.Player.name,1,-3 )
 KillSpree = 0
 Deaths = 0
-KillTimer = 30
+KillTimer = 40
 TooManyDeaths = 5
 
     C_BlackOrc = {"greenskins/bo1", "greenskins/bo2"}
@@ -559,7 +559,7 @@ function RandM_Announcer.End()
                 RandM_Announcer.logSoundToPlay(killType);
             end
         end
-    else
+    else 
         killType = endKT[math.random(#endKT)]
         RandM_Announcer.logSoundToPlay(killType);
     end
@@ -570,8 +570,8 @@ function RandM_Announcer.End()
     Deaths = 0
     KillSpree = 0
         if ScHasBegunCOMPLETE == true or ThirtySecondsUntilScBeginsCOMPLETE == true then
-            local ThirtySecondsUntilScBeginsCOMPLETE = false
-            local ScHasBegunCOMPLETE = false
+            ThirtySecondsUntilScBeginsCOMPLETE = false
+            ScHasBegunCOMPLETE = false
             ScenarioTasksComplete = false
         end
     end
